@@ -1,0 +1,37 @@
+@page
+@model Feedback.RazorPages.Pages.Feedbacks.Index
+
+
+
+<td><a asp-page="/Feedbacks/Create">Criar novo Feedbacks</a></td>
+<h1>Lista de Feedbacks</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>@Html.DisplayNameFor(model => model.FeedbackList[0].Comentario)</th>
+            <th>Data</th>
+            <th>@Html.DisplayNameFor(model => model.FeedbackList[0].Avaliacao)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var feedback in Model.FeedbackList)
+                {
+                    <tr>
+                        <td>@feedback.NomeCliente</td>
+                        <td>@feedback.EmailCliente</td>
+                        <td>@feedback.Comentario</td>
+                        <td>@feedback.DataFormatada</td>
+                        <td>@feedback.Avaliacao</td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@feedback.IdFeedback">Alterar</a>
+                            <a asp-page="./Visualizar" asp-route-id="@feedback.IdFeedback">Visualizar</a>
+                            <a asp-page="./Delete" asp-route-id="@feedback.IdFeedback">Deletar</a>
+                        </td>
+                    </tr>
+                }
+
+    </tbody>
+</table>
